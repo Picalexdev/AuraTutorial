@@ -3,6 +3,7 @@ DerivedDataCache
 Intermediate
 Saved
 Build
+.idea/
 
 .vscode
 .vs
@@ -14,3 +15,6 @@ Build
 *.suo
 *.xcodeproj
 *.xcworkspace
+.idea/.idea.Aura/.idea/encodings.xml
+.idea/.idea.Aura/.idea/indexLayout.xml
+.idea/.idea.Aura/.idea/vcs.xml
