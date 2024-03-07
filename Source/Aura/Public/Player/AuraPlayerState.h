@@ -19,6 +19,7 @@ public:
 	void AuraPlayerState();
 	
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override {return AbilitySystemComponent;}
+	
 	virtual UAttributeSet* GetAttributeSet() const {return AttributeSet;}
 protected:
 	

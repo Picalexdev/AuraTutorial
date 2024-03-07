@@ -33,3 +33,14 @@ void AAuraEnemy::UnhighlightActor()
 	Weapon->SetRenderCustomDepth(false);
 }
 
+void AAuraEnemy::BeginPlay()
+{
+	Super::BeginPlay();
+	if (!AbilitySystemComponent)
+	{
+		UE_LOG(LogTemp, Error, TEXT("No AbilitySystemComponent found in %s. Did you forget to create the component in the Blueprint?"), *GetName());
+		return;
+	}
+	AbilitySystemComponent->InitAbilityActorInfo(this, this);
+}
+

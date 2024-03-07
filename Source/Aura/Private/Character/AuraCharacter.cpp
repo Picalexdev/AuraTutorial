@@ -3,6 +3,9 @@
 
 #include "Character/AuraCharacter.h"
 
+#include "AbilitySystem/AuraAbilitySystemComponent.h"
+#include "Player/AuraPlayerState.h"
+
 #include "GameFramework/CharacterMovementComponent.h"
 
 void AAuraCharacter::AuraCharacter()
@@ -17,7 +20,32 @@ void AAuraCharacter::AuraCharacter()
 	bUseControllerRotationRoll = false;
 }
 
-void AAuraCharacter::BeginPlay()
+void AAuraCharacter::PossessedBy(AController* NewController)
 {
-	Super::BeginPlay();
+	Super::PossessedBy(NewController);
+
+	// Init ability actor info on the server
+	InitAbilityActorInfo();
+}
+
+void AAuraCharacter::OnRep_PlayerState()
+{
+	Super::OnRep_PlayerState();
+
+	// Init ability actor info on the client
+	InitAbilityActorInfo();
+}
+
+void AAuraCharacter::InitAbilityActorInfo()
+{
+	AAuraPlayerState* AuraPlayerState = GetPlayerState<AAuraPlayerState>();
+	if (!AuraPlayerState) return;
+	if (!AuraPlayerState->GetAbilitySystemComponent())
+	{
+		UE_LOG(LogTemp, Error, TEXT("No AbilitySystemComponent found in %s. Did you forget to create the component in the Blueprint?"), *GetName());
+		return;
+	}
+	AuraPlayerState->GetAbilitySystemComponent()->InitAbilityActorInfo(AuraPlayerState, this);
+	AbilitySystemComponent = AuraPlayerState->GetAbilitySystemComponent();
+	AttributeSet = AuraPlayerState->GetAttributeSet();
 }
