@@ -8,7 +8,7 @@
 
 #include "GameFramework/CharacterMovementComponent.h"
 
-void AAuraCharacter::AuraCharacter()
+AAuraCharacter::AAuraCharacter()
 {
 	GetCharacterMovement()->bOrientRotationToMovement = true;
 	GetCharacterMovement()->RotationRate = FRotator(0.0f, 540.0f, 0.0f);

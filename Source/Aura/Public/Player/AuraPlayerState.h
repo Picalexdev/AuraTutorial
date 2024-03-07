@@ -16,7 +16,7 @@ class AURA_API AAuraPlayerState : public APlayerState, public IAbilitySystemInte
 	GENERATED_BODY()
 
 public:
-	void AuraPlayerState();
+	AAuraPlayerState();
 	
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override {return AbilitySystemComponent;}
 	
