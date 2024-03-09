@@ -33,6 +33,8 @@ private:
 
 	UPROPERTY(VisibleAnywhere)
 	TObjectPtr<UStaticMeshComponent> Mesh;
-
+		
+	UPROPERTY(VisibleAnywhere)
+	TObjectPtr<USceneComponent> Root;
 
 };
